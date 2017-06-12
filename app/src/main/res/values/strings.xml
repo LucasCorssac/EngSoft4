@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">EngSoft4</string>
+    <string name="app_name">GiveMeMoney</string>
+    <string name="auth_failed">auth failed</string>
 </resources>
