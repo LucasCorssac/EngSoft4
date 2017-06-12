@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".FazerPedidoActivity" />
         <activity android:name=".VisualizarPedidosActivity" />
-        <activity android:name=".RegisterUserActivity"></activity>
+        <activity android:name=".RegisterUserActivity" />
+        <activity android:name=".MainMenu" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

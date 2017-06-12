@@ -1,5 +1,6 @@
 package com.example.galtama.engsoft4;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,9 +15,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterUserActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
+
 
     private static final String TAG = "RegisterUserActivity";
 
@@ -30,16 +31,16 @@ public class RegisterUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_user);
+        setContentView(R.layout.activity_login);
 
-        editText_Email = (EditText) findViewById(R.id.editText_register_user_email);
-        editText_Password = (EditText) findViewById(R.id.editText_register_user_password);
-        button_enviarPedido = (Button) findViewById(R.id.button_register_user);
+        editText_Email = (EditText) findViewById(R.id.editText_login_email);
+        editText_Password = (EditText) findViewById(R.id.editText_login_password);
+        button_enviarPedido = (Button) findViewById(R.id.button_login);
 
         button_enviarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createAccount();
+                loginAccount();
             }
         });
 
@@ -60,10 +61,11 @@ public class RegisterUserActivity extends AppCompatActivity {
                 // ...
             }
         };
+
     }
 
 
-     @Override
+    @Override
     protected void onStart() {
         super.onStart();
 
@@ -78,37 +80,39 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
     }
 
-    private void createAccount(){
+
+    private void loginAccount(){
 
         String email = editText_Email.getText().toString();
         String password = editText_Password.getText().toString();
 
-
-
-
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
+                        
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-
-                            Log.d(TAG, "onComplete: Failed=" + task.getException().getMessage()); //ADD THIS
-
-                            Toast.makeText(getApplicationContext(), "Erro na criacao de usuario", Toast.LENGTH_SHORT).show();
+                            Log.w(TAG, "signInWithEmail:failed", task.getException());
+                            Toast.makeText(getApplicationContext(), R.string.auth_failed,
+                                    Toast.LENGTH_SHORT).show();
                         }
-                        else{
-                            Toast.makeText(getApplicationContext(), "Usuario criado com sucesso!", Toast.LENGTH_SHORT).show();
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(),"login successful",
+                                    Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+                            startActivity(intent);
                         }
 
                         // ...
                     }
                 });
-
     }
 
 

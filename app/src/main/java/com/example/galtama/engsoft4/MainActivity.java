@@ -29,31 +29,24 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-    }
-
-
-
-
-
-    public void changeToVisualizarPedidos(View view){
-        Intent intent = new Intent(this, VisualizarPedidosActivity.class);
+        Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
+
+
+
     }
 
-    public void changeToFazerPedido(View view){
-        Intent intent = new Intent(this, FazerPedidoActivity.class);
-        startActivity(intent);
-    }
 
-    public void changeToRegisterUser(View view){
-        Intent intent = new Intent(this, RegisterUserActivity.class);
-        startActivity(intent);
-    }
+
+
+
+
 }
