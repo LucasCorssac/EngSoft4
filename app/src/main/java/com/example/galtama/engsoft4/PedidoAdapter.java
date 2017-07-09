@@ -37,11 +37,13 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
 
         TextView textViewValor = (TextView) listViewItem.findViewById(R.id.list_pedidos_layout_valor);
         TextView textViewData = (TextView) listViewItem.findViewById(R.id.list_pedidos_layout_dataPagamento);
+        TextView textcausaSocial= (TextView) listViewItem.findViewById(R.id.list_pedidos_layout_causaSocial);
 
         Pedido pedido = pedidoList.get(position);
 
         textViewValor.setText(Integer.toString(pedido.getValorPedido()));
         textViewData.setText(pedido.getdataPagamento());
+        textcausaSocial.setText(pedido.getcausaSocial());
 
         return listViewItem;
 

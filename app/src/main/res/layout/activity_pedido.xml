@@ -40,13 +40,31 @@
         android:id="@+id/button_EnviarPedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="183dp"
         android:text="Enviar Pedido"
         app:layout_constraintLeft_toLeftOf="@+id/editText_getData"
         app:layout_constraintTop_toBottomOf="@+id/editText_getData"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1" />
+
+    <EditText
+        android:id="@+id/editText_causaSocial"
+        android:layout_width="216dp"
+        android:layout_height="129dp"
+        android:ems="10"
+        android:hint="Causa social"
+        android:inputType="textPersonName"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_EnviarPedido"
+        android:layout_marginTop="74dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="71dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editText_getData"
+        android:layout_marginLeft="16dp" />
 
 </android.support.constraint.ConstraintLayout>

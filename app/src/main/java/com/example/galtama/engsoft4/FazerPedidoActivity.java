@@ -17,6 +17,7 @@ public class FazerPedidoActivity extends AppCompatActivity {
 
     EditText editText_Data;
     EditText editText_Valor;
+    EditText editText_causaSocial;
     Button button_enviarPedido;
 
 
@@ -29,6 +30,7 @@ public class FazerPedidoActivity extends AppCompatActivity {
 
         editText_Data = (EditText) findViewById(R.id.editText_getData);
         editText_Valor = (EditText) findViewById(R.id.editText_getValor);
+        editText_causaSocial = (EditText) findViewById(R.id.editText_causaSocial);
         button_enviarPedido = (Button) findViewById(R.id.button_EnviarPedido);
 
         button_enviarPedido.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +46,8 @@ public class FazerPedidoActivity extends AppCompatActivity {
 
         String svalor = editText_Valor.getText().toString().trim();
         String data = editText_Data.getText().toString().trim();
+        String causaSocial = editText_causaSocial.getText().toString().trim();
+
 
         if(!TextUtils.isEmpty(svalor) && !TextUtils.isEmpty(svalor)){
             int valor = Integer.parseInt(svalor);
@@ -51,7 +55,7 @@ public class FazerPedidoActivity extends AppCompatActivity {
             String id = dbRef.push().getKey();
 
 
-            Pedido pedido = new Pedido(id, valor, data);
+            Pedido pedido = new Pedido(id, valor, data, causaSocial);
 
             dbRef.child(id).setValue(pedido);
 

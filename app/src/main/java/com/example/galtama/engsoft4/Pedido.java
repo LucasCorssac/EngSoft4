@@ -1,5 +1,6 @@
 package com.example.galtama.engsoft4;
 
+import android.media.Image;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -16,16 +17,19 @@ public class Pedido {
     int valorPedido;
     String dataPagamento;
     String idPedido;
+    String causaSocial;
+    //Image imagem;
 
 
     public Pedido() {
 
     }
 
-    public Pedido(String idPedido, int valorPedido, String dataPagamento) {
+    public Pedido(String idPedido, int valorPedido, String dataPagamento, String causaSocial) {
         this.valorPedido = valorPedido;
         this.dataPagamento = dataPagamento;
         this.idPedido = idPedido;
+        this.causaSocial = causaSocial;
     }
 
 
@@ -42,6 +46,10 @@ public class Pedido {
 
         return dataPagamento;
 
+    }
+
+    public String getcausaSocial() {
+        return this.causaSocial;
     }
 
 }
