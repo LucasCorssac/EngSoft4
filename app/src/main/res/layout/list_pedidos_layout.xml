@@ -4,37 +4,53 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation= "horizontal">
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:ems="10"
+            android:inputType="none"
+            android:text="Valor:" />
 
-    <EditText
-        android:id="@+id/editText5"
+        <EditText
+            android:id="@+id/list_pedidos_layout_valor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="none" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation= "horizontal">
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="none"
+            android:text="data de pagamento:" />
+
+        <EditText
+            android:id="@+id/list_pedidos_layout_dataPagamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="none" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/list_pedidos_layout_imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:ems="10"
-        android:inputType="none"
-        android:text="Valor:" />
-
-    <EditText
-        android:id="@+id/list_pedidos_layout_valor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="none" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="none"
-        android:text="data de pagamento:" />
-
-    <EditText
-        android:id="@+id/list_pedidos_layout_dataPagamento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="none" />
+        android:layout_weight="0.5"/>
 
     <EditText
     android:id="@+id/list_pedidos_layout_causaSocial"
@@ -42,6 +58,6 @@
     android:layout_height="wrap_content"
     android:ems="10"
     android:inputType="none"
-        android:layout_weight="0.37" />
+    android:layout_weight="0.20"/>
 
 </LinearLayout>

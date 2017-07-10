@@ -1,6 +1,7 @@
 package com.example.galtama.engsoft4;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editText_Password;
     private Button button_enviarPedido;
 
+    private ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         editText_Email = (EditText) findViewById(R.id.editText_login_email);
         editText_Password = (EditText) findViewById(R.id.editText_login_password);
         button_enviarPedido = (Button) findViewById(R.id.button_login);
+        imageView = (ImageView) findViewById(R.id.imageViewLogin);
 
         button_enviarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         mAuth.addAuthStateListener(mAuthListener);
+
+        downloadFirebaseFile();
     }
 
     @Override
@@ -90,28 +99,34 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void downloadFirebaseFile(){
+        StorageReference testRef = mStorageRef.child("monkey_selfie.jpg");
 
-        StorageReference riversRef = mStorageRef.child("monkey_selfie.jpg");
-        File localFile = null;
-        try {
-            localFile = File.createTempFile("images", "jpg");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        riversRef.getFile(localFile)
-                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        // Successfully downloaded data to local file
-                        // ...
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle failed download
-                // ...
-            }
-        });
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+                .load(testRef)
+                .into(imageView);
+
+
+//        File localFile = null;
+//        try {
+//            localFile = File.createTempFile("images", "jpg");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        testRef.getFile(localFile)
+//                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+//                        // Successfully downloaded data to local file
+//                        // ...
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                // Handle failed download
+//                // ...
+//            }
+//        });
     }
 
 

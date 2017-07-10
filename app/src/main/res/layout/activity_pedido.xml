@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="183dp"
+        android:layout_marginTop="314dp"
         android:text="Enviar Pedido"
         app:layout_constraintLeft_toLeftOf="@+id/editText_getData"
         app:layout_constraintTop_toBottomOf="@+id/editText_getData"
@@ -51,8 +51,8 @@
 
     <EditText
         android:id="@+id/editText_causaSocial"
-        android:layout_width="216dp"
-        android:layout_height="129dp"
+        android:layout_width="204dp"
+        android:layout_height="58dp"
         android:ems="10"
         android:hint="Causa social"
         android:inputType="textPersonName"
@@ -65,6 +65,78 @@
         android:layout_marginBottom="71dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_getData"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/button_EnviarPedido"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintRight_toRightOf="@+id/editText"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="114dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="26dp"
+        app:layout_constraintHorizontal_bias="1.0">
+
+        <Button
+            android:id="@+id/buttonChoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Choose" />
+
+        <Button
+            android:id="@+id/buttonUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Upload" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Imagem:"
+        android:background="@null"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:layout_marginStart="16dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="17dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:layout_below="@id/linearLayout"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_EnviarPedido"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintRight_toRightOf="@+id/linearLayout"
+        android:layout_marginTop="64dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp" />
+
 
 </android.support.constraint.ConstraintLayout>

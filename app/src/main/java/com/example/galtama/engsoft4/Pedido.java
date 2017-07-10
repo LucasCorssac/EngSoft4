@@ -14,9 +14,9 @@ import java.util.GregorianCalendar;
 
 public class Pedido {
 
+    String idPedido;
     int valorPedido;
     String dataPagamento;
-    String idPedido;
     String causaSocial;
     //Image imagem;
 
@@ -51,5 +51,7 @@ public class Pedido {
     public String getcausaSocial() {
         return this.causaSocial;
     }
+
+    public String getIdPedido(){return idPedido;}
 
 }
