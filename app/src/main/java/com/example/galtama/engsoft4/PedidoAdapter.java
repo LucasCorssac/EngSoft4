@@ -46,32 +46,6 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
 
     }
 
-    private void downloadFirebaseFile(){
-
-
-
-//        File localFile = null;
-//        try {
-//            localFile = File.createTempFile("images", "jpg");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        testRef.getFile(localFile)
-//                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-//                        // Successfully downloaded data to local file
-//                        // ...
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle failed download
-//                // ...
-//            }
-//        });
-    }
-
 
     @NonNull
     @Override
