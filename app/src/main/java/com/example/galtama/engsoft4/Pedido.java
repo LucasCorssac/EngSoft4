@@ -18,6 +18,7 @@ public class Pedido {
     int valorPedido;
     String dataPagamento;
     String causaSocial;
+    String nome;
     //Image imagem;
 
 
@@ -25,11 +26,12 @@ public class Pedido {
 
     }
 
-    public Pedido(String idPedido, int valorPedido, String dataPagamento, String causaSocial) {
+    public Pedido(String idPedido, int valorPedido, String dataPagamento, String causaSocial, String nome) {
         this.valorPedido = valorPedido;
         this.dataPagamento = dataPagamento;
         this.idPedido = idPedido;
         this.causaSocial = causaSocial;
+        this.nome = nome;
     }
 
 
@@ -53,5 +55,7 @@ public class Pedido {
     }
 
     public String getIdPedido(){return idPedido;}
+
+    public String getNome(){return nome;}
 
 }

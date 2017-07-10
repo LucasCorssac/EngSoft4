@@ -10,9 +10,9 @@
         android:id="@+id/editText_getData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="153dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="98dp"
         android:ems="10"
         android:hint="Inserir Data"
         android:inputType="date"
@@ -93,13 +93,6 @@
             android:layout_weight="1"
             android:text="Choose" />
 
-        <Button
-            android:id="@+id/buttonUpload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Upload" />
-
     </LinearLayout>
 
     <EditText
@@ -136,7 +129,29 @@
         app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp" />
+        android:layout_marginRight="12dp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextNome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Nome"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_getValor"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/editText_getValor"
+        app:layout_constraintLeft_toRightOf="@+id/editText_getValor"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp" />
 
 
 </android.support.constraint.ConstraintLayout>
