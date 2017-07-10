@@ -34,6 +34,7 @@ public class FazerPedidoActivity extends AppCompatActivity implements View.OnCli
     private EditText editText_Data;
     private EditText editText_Valor;
     private EditText editText_causaSocial;
+    private EditText editText_Nome;
     private Button button_enviarPedido;
 
     //a constant to track the file chooser intent
@@ -41,15 +42,12 @@ public class FazerPedidoActivity extends AppCompatActivity implements View.OnCli
 
     //Buttons
     private Button buttonChoose;
-    private Button buttonUpload;
 
     //ImageView
     private ImageView imageView;
     private Uri filePath;
 
     private StorageReference storageRef;
-
-
 
 
     @Override
@@ -63,16 +61,15 @@ public class FazerPedidoActivity extends AppCompatActivity implements View.OnCli
         editText_Valor = (EditText) findViewById(R.id.editText_getValor);
         editText_causaSocial = (EditText) findViewById(R.id.editText_causaSocial);
         button_enviarPedido = (Button) findViewById(R.id.button_EnviarPedido);
+        editText_Nome = (EditText) findViewById(R.id.editTextNome);
 
         //getting views from layout
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
-        buttonUpload = (Button) findViewById(R.id.buttonUpload);
 
         imageView = (ImageView) findViewById(R.id.imageView);
 
         //attaching listener
         buttonChoose.setOnClickListener(this);
-        buttonUpload.setOnClickListener(this);
 
         storageRef = FirebaseStorage.getInstance().getReference();
 
@@ -119,9 +116,7 @@ public class FazerPedidoActivity extends AppCompatActivity implements View.OnCli
             showFileChooser();
         }
         //if the clicked button is upload
-        else if (view == buttonUpload) {
 
-        }
     }
 
     //this method will upload the file
@@ -182,15 +177,16 @@ public class FazerPedidoActivity extends AppCompatActivity implements View.OnCli
         String svalor = editText_Valor.getText().toString().trim();
         String data = editText_Data.getText().toString().trim();
         String causaSocial = editText_causaSocial.getText().toString().trim();
+        String nome = editText_Nome.getText().toString().trim();
 
 
-        if(!TextUtils.isEmpty(svalor) && !TextUtils.isEmpty(data) && !TextUtils.isEmpty(causaSocial)){
+        if(!TextUtils.isEmpty(svalor) && !TextUtils.isEmpty(data) && !TextUtils.isEmpty(causaSocial) && !TextUtils.isEmpty(causaSocial)){
             int valor = Integer.parseInt(svalor);
             String id = dbRef.push().getKey();
 
             uploadFile(id);
 
-            Pedido pedido = new Pedido(id, valor, data, causaSocial);
+            Pedido pedido = new Pedido(id, valor, data, causaSocial,nome);
 
             dbRef.child(id).setValue(pedido);
 
