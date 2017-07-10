@@ -32,6 +32,7 @@ public class VisualizarPedidosActivity extends AppCompatActivity implements Gest
     TextView textViewValor ;
     TextView textViewData ;
     TextView textcausaSocial;
+    TextView textViewNome;
     ImageView imageView;
 
     int index;
@@ -60,6 +61,7 @@ public class VisualizarPedidosActivity extends AppCompatActivity implements Gest
         textViewData = (TextView) findViewById(R.id.list_pedidos_layout_dataPagamento);
         textcausaSocial = (TextView) findViewById(R.id.list_pedidos_layout_causaSocial);
         imageView = (ImageView) findViewById(R.id.list_pedidos_layout_imageView);
+        textViewNome = (TextView) findViewById(R.id.list_pedidos_layout_Nome);
 
         index = 0;
 
@@ -81,6 +83,7 @@ public class VisualizarPedidosActivity extends AppCompatActivity implements Gest
         textViewValor.setText(Integer.toString(pedido.getValorPedido()));
         textViewData.setText(pedido.getdataPagamento());
         textcausaSocial.setText(pedido.getcausaSocial());
+        textViewNome.setText(pedido.getNome());
 
     }
 
