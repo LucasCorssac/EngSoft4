@@ -45,12 +45,6 @@ public class LoginActivity extends AppCompatActivity implements GestureDetector.
     private Button button_fazerLogin;
     private Button button_registerUser;
 
-    private ImageView imageView;
-
-    private View view;
-
-    private RelativeLayout layout;
-
     GestureDetector gestureDetector;
 
 
@@ -65,15 +59,13 @@ public class LoginActivity extends AppCompatActivity implements GestureDetector.
         editText_Password = (EditText) findViewById(R.id.editText_login_password);
         button_fazerLogin = (Button) findViewById(R.id.button_login);
         button_registerUser = (Button) findViewById(R.id.button_register);
-
-        view = findViewById(R.id.login_fullLayout);
+        
 
         //layout = R.layout.activity_login;
 
         gestureDetector = new GestureDetector(LoginActivity.this, LoginActivity.this);
 
 
-        button_enviarPedido.setOnClickListener(new View.OnClickListener() {
         button_fazerLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
