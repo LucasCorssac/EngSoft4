@@ -57,7 +57,7 @@
 
     <ImageView
         android:id="@+id/imageViewLogin"
-        android:src="@drawable/Dinheiro"
+        android:src="@drawable/dinheiro"
         android:layout_width="144dp"
         android:layout_height="81dp"
         tools:layout_constraintTop_creator="1"
