@@ -24,8 +24,4 @@ public class MainMenu extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void changeToRegisterUser(View view){
-        Intent intent = new Intent(this, RegisterUserActivity.class);
-        startActivity(intent);
-    }
 }

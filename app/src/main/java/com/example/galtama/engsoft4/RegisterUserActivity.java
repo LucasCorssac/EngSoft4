@@ -1,5 +1,6 @@
 package com.example.galtama.engsoft4;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -103,6 +104,9 @@ public class RegisterUserActivity extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "Usuario criado com sucesso!", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            startActivity(intent);
                         }
 
                         // ...

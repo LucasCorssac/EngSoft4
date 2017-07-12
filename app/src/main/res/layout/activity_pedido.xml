@@ -1,157 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.galtama.engsoft4.FazerPedidoActivity">
-
-    <EditText
-        android:id="@+id/editText_getData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="153dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="98dp"
-        android:ems="10"
-        android:hint="Inserir Data"
-        android:inputType="date"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <EditText
-        android:id="@+id/editText_getValor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Inserir Valor"
-        android:inputType="number"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <Button
-        android:id="@+id/button_EnviarPedido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="314dp"
-        android:text="Enviar Pedido"
-        app:layout_constraintLeft_toLeftOf="@+id/editText_getData"
-        app:layout_constraintTop_toBottomOf="@+id/editText_getData"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <EditText
-        android:id="@+id/editText_causaSocial"
-        android:layout_width="204dp"
-        android:layout_height="58dp"
-        android:ems="10"
-        android:hint="Causa social"
-        android:inputType="textPersonName"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button_EnviarPedido"
-        android:layout_marginTop="74dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="71dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText_getData"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintVertical_bias="0.0" />
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/button_EnviarPedido"
-        android:layout_marginStart="29dp"
-        android:layout_marginEnd="26dp"
-        app:layout_constraintRight_toRightOf="@+id/editText"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="114dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="29dp"
-        android:layout_marginRight="26dp"
-        app:layout_constraintHorizontal_bias="1.0">
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:inputType="textPersonName"
+            android:hint="Nome" />
+
+        <EditText
+            android:id="@+id/editText_getData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Inserir Data"
+            android:inputType="date"
+            tools:layout_editor_absoluteY="99dp"
+            tools:layout_editor_absoluteX="174dp" />
+
+        <EditText
+            android:id="@+id/editText_getValor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Inserir Valor"
+            android:inputType="number"
+            tools:layout_editor_absoluteY="99dp"
+            tools:layout_editor_absoluteX="29dp" />
+
+        <EditText
+            android:id="@+id/editText_causaSocial"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingLeft="4dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="Causa social"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="none"
+            android:text="Imagem:"
+            android:background="@null"
+            tools:layout_editor_absoluteY="341dp"
+            tools:layout_editor_absoluteX="106dp" />
 
         <Button
             android:id="@+id/buttonChoose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height= "60dp"
             android:layout_weight="1"
-            android:text="Choose" />
+            android:text="Escolher" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            tools:layout_editor_absoluteY="426dp"
+            tools:layout_editor_absoluteX="242dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:id="@+id/button_EnviarPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:text="Enviar Pedido"
+                tools:layout_editor_absoluteY="431dp"
+                tools:layout_editor_absoluteX="90dp" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Imagem:"
-        android:background="@null"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        android:layout_marginStart="16dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="17dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="78dp"
-        android:layout_below="@id/linearLayout"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button_EnviarPedido"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintRight_toRightOf="@+id/linearLayout"
-        android:layout_marginTop="64dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="68dp"
-        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/editTextNome"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Nome"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText_getValor"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintTop_toTopOf="@+id/editText_getValor"
-        app:layout_constraintLeft_toRightOf="@+id/editText_getValor"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp" />
+</ScrollView>
 
 
-</android.support.constraint.ConstraintLayout>
+<!--<android.support.constraint.ConstraintLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.example.galtama.engsoft4.FazerPedidoActivity"-->
+    <!--tools:layout_editor_absoluteY="81dp"-->
+    <!--tools:layout_editor_absoluteX="0dp">-->
+
+
+
+
+<!--</android.support.constraint.ConstraintLayout>-->
