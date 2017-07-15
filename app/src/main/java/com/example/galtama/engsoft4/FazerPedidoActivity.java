@@ -27,7 +27,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
-public class FazerPedidoActivity extends AppCompatActivity implements View.OnClickListener{
+public class FazerPedidoActivity extends AppCompatActivity{
 
     private DatabaseReference dbRef;
 
@@ -39,7 +39,6 @@ public class FazerPedidoActivity extends AppCompatActivity implements View.OnCli
 
     //a constant to track the file chooser intent
     private static final int PICK_IMAGE_REQUEST = 234;
-
     //Buttons
     private Button buttonChoose;
 
@@ -69,7 +68,13 @@ public class FazerPedidoActivity extends AppCompatActivity implements View.OnCli
         imageView = (ImageView) findViewById(R.id.imageView);
 
         //attaching listener
-        buttonChoose.setOnClickListener(this);
+        buttonChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFileChooser();
+            }
+        });
+
 
         storageRef = FirebaseStorage.getInstance().getReference();
 
@@ -109,15 +114,7 @@ public class FazerPedidoActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        //if the clicked button is choose
-        if (view == buttonChoose) {
-            showFileChooser();
-        }
-        //if the clicked button is upload
 
-    }
 
     //this method will upload the file
     private void uploadFile(String id) {
