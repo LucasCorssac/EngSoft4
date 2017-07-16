@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -39,10 +41,10 @@ public class FazerPedidoActivity extends AppCompatActivity{
 
     //a constant to track the file chooser intent
     private static final int PICK_IMAGE_REQUEST = 1;
-    //Buttons
+
     private Button buttonChoose;
 
-    //ImageView
+
     private ImageView imageView;
     private Uri filePath;
 
@@ -185,7 +187,13 @@ public class FazerPedidoActivity extends AppCompatActivity{
 
             Pedido pedido = new Pedido(id, valor, data, causaSocial,nome);
 
-            dbRef.child(id).setValue(pedido);
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            String uid = user.getUid();
+
+            dbRef.child(uid).child(id).setValue(pedido);
+
+            //dbRef.child(id).setValue(pedido);
 
             Toast.makeText(this, "Pedido Feito com Sucesso", Toast.LENGTH_LONG).show();
 

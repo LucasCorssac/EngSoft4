@@ -44,11 +44,15 @@ public class VisualizarPedidosActivity extends AppCompatActivity {
 
                 pedidoList.clear();
 
-                for(DataSnapshot pedidoSnapshot: dataSnapshot.getChildren()){
+                for(DataSnapshot userPedidoSnapshot: dataSnapshot.getChildren()){
 
-                    Pedido pedido = pedidoSnapshot.getValue(Pedido.class);
+                    for (DataSnapshot pedidoSnapshot : userPedidoSnapshot.getChildren() )
+                    {
+                        Pedido pedido = pedidoSnapshot.getValue(Pedido.class);
 
-                    pedidoList.add(pedido);
+                        pedidoList.add(pedido);
+                    }
+
                 }
 
                 PedidoAdapter adapter = new PedidoAdapter(VisualizarPedidosActivity.this, pedidoList);
