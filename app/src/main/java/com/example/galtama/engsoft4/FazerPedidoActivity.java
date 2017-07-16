@@ -38,7 +38,7 @@ public class FazerPedidoActivity extends AppCompatActivity{
     private Button button_enviarPedido;
 
     //a constant to track the file chooser intent
-    private static final int PICK_IMAGE_REQUEST = 234;
+    private static final int PICK_IMAGE_REQUEST = 1;
     //Buttons
     private Button buttonChoose;
 

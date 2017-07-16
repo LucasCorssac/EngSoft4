@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "RegisterUserActivity";
 
     private FirebaseAuth mAuth;
-    private StorageReference mStorageRef;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private EditText editText_Email;
@@ -72,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
