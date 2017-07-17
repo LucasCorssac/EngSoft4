@@ -9,6 +9,11 @@ public class Oferta {
     int valorCobrado;
     String idOferta;
 
+    public Oferta(int valorCobrado, String idOferta) {
+        this.valorCobrado = valorCobrado;
+        this.idOferta = idOferta;
+    }
+
     public int getValorCobrado() {
         return valorCobrado;
     }

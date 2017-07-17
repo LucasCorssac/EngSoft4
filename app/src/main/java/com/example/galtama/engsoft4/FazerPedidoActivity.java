@@ -2,9 +2,7 @@ package com.example.galtama.engsoft4;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,14 +18,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.io.IOException;
 
 public class FazerPedidoActivity extends AppCompatActivity{
 
@@ -36,7 +36,6 @@ public class FazerPedidoActivity extends AppCompatActivity{
     private EditText editText_Data;
     private EditText editText_Valor;
     private EditText editText_causaSocial;
-    private EditText editText_Nome;
     private Button button_enviarPedido;
 
     //a constant to track the file chooser intent
@@ -51,6 +50,11 @@ public class FazerPedidoActivity extends AppCompatActivity{
     private StorageReference storageRef;
 
 
+    private Usuario usuario;
+
+    private DatabaseReference usuarioRef;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,12 +66,36 @@ public class FazerPedidoActivity extends AppCompatActivity{
         editText_Valor = (EditText) findViewById(R.id.editText_getValor);
         editText_causaSocial = (EditText) findViewById(R.id.editText_causaSocial);
         button_enviarPedido = (Button) findViewById(R.id.button_EnviarPedido);
-        editText_Nome = (EditText) findViewById(R.id.editTextNome);
 
         //getting views from layout
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
 
         imageView = (ImageView) findViewById(R.id.imageView);
+
+
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        usuarioRef = FirebaseDatabase.getInstance().getReference("usuarios");
+        //usuarioRef = usuarioRef.child(user.getUid());
+
+
+        Query userQuery = usuarioRef.orderByKey().equalTo(user.getUid());
+
+
+
+        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //dataSnapshot.chi
+                usuario =  dataSnapshot.child(user.getUid()).getValue(Usuario.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
+
+
 
         //attaching listener
         buttonChoose.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +117,10 @@ public class FazerPedidoActivity extends AppCompatActivity{
         });
 
     }
+
+
+
+
 
     //method to show file chooser
     private void showFileChooser() {
@@ -176,7 +208,6 @@ public class FazerPedidoActivity extends AppCompatActivity{
         String svalor = editText_Valor.getText().toString().trim();
         String data = editText_Data.getText().toString().trim();
         String causaSocial = editText_causaSocial.getText().toString().trim();
-        String nome = editText_Nome.getText().toString().trim();
 
 
         if(!TextUtils.isEmpty(svalor) && !TextUtils.isEmpty(data) && !TextUtils.isEmpty(causaSocial) && !TextUtils.isEmpty(causaSocial)){
@@ -185,13 +216,10 @@ public class FazerPedidoActivity extends AppCompatActivity{
 
             uploadFile(id);
 
-            Pedido pedido = new Pedido(id, valor, data, causaSocial,nome);
 
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            Pedido pedido = new Pedido(id, valor, data, causaSocial,usuario.getNome(), usuario.getId());
 
-            String uid = user.getUid();
-
-            dbRef.child(uid).child(id).setValue(pedido);
+            dbRef.child(usuario.getId()).child(id).setValue(pedido);
 
             //dbRef.child(id).setValue(pedido);
 

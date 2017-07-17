@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterUserActivity extends AppCompatActivity {
@@ -24,8 +25,10 @@ public class RegisterUserActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    EditText editText_Email;
+    EditText editText_Nome;
     EditText editText_Password;
+    EditText editText_Email;
+    EditText editText_capitalInicial;
     Button button_enviarPedido;
 
     @Override
@@ -33,8 +36,10 @@ public class RegisterUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
 
+        editText_Nome = (EditText) findViewById(R.id.editText_register_user_nome);
         editText_Email = (EditText) findViewById(R.id.editText_register_user_email);
         editText_Password = (EditText) findViewById(R.id.editText_register_user_password);
+        editText_capitalInicial = (EditText) findViewById(R.id.editText_register_user_capitalInicial);
         button_enviarPedido = (Button) findViewById(R.id.button_register_user);
 
         button_enviarPedido.setOnClickListener(new View.OnClickListener() {
@@ -81,9 +86,10 @@ public class RegisterUserActivity extends AppCompatActivity {
 
     private void createAccount(){
 
-        String email = editText_Email.getText().toString();
-        String password = editText_Password.getText().toString();
-
+        final String nome = editText_Nome.getText().toString();
+        final String email = editText_Email.getText().toString();
+        final String password = editText_Password.getText().toString();
+        final String capitalInicialString = editText_capitalInicial.getText().toString();
 
 
 
@@ -104,6 +110,23 @@ public class RegisterUserActivity extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "Usuario criado com sucesso!", Toast.LENGTH_SHORT).show();
+
+                            mAuth.signInWithEmailAndPassword(email, password);
+
+
+                            int capitalInicial = Integer.parseInt(capitalInicialString);
+
+                            DatabaseReference usuarioReference = FirebaseDatabase.getInstance().getReference("usuarios");
+
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                            String uid = user.getUid();
+
+                            Usuario usuario = new Usuario(uid, nome, capitalInicial);
+
+                            usuarioReference.child(uid).setValue(usuario);
+
+                            mAuth.signOut();
 
                             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                             startActivity(intent);

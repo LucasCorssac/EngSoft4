@@ -1,7 +1,13 @@
 package com.example.galtama.engsoft4;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +36,7 @@ public class VisualizarPedidosActivity extends AppCompatActivity {
 
         listViewPedido = (ListView) findViewById(R.id.listViewPedidos);
         pedidoList = new ArrayList<>();
+
 
 
     }
@@ -65,4 +72,10 @@ public class VisualizarPedidosActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+
 }

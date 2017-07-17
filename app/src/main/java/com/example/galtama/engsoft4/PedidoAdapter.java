@@ -1,13 +1,17 @@
 package com.example.galtama.engsoft4;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +19,8 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -34,6 +40,7 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
     private List<Pedido> pedidoList;
 
     private StorageReference mStorageRef;
+    private DatabaseReference dbRef;
 
 
     public PedidoAdapter(Activity context, List<Pedido> pedidoList){
@@ -42,35 +49,11 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
         this.pedidoList = pedidoList;
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        dbRef = FirebaseDatabase.getInstance().getReference("pedidos");
 
 
     }
 
-    private void downloadFirebaseFile(){
-
-
-
-//        File localFile = null;
-//        try {
-//            localFile = File.createTempFile("images", "jpg");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        testRef.getFile(localFile)
-//                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-//                        // Successfully downloaded data to local file
-//                        // ...
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle failed download
-//                // ...
-//            }
-//        });
-    }
 
 
     @NonNull
@@ -87,9 +70,17 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
         TextView textViewNome = (TextView) listViewItem.findViewById(R.id.list_pedidos_layout_Nome);
         ImageView imageView = (ImageView) listViewItem.findViewById(R.id.list_pedidos_layout_imageView);
 
+        Button buttonFazerOferta= (Button) listViewItem.findViewById(R.id.buttonFazerOferta);
 
-        Pedido pedido = pedidoList.get(position);
 
+        final Pedido pedido = pedidoList.get(position);
+
+        buttonFazerOferta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fazerOfertaDialog(pedido, v);
+            }
+        });
 
         StorageReference testRef = mStorageRef.child("images/" + pedido.getIdPedido());
 
@@ -108,6 +99,55 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
 
 
     }
+
+
+    private void fazerOfertaDialog(Pedido pedido, View v)
+    {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = context.getLayoutInflater();
+
+        final View dialogView = inflater.inflate(R.layout.fazer_oferta_dialog, (ViewGroup) v.getRootView());
+
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextValorOferta = (EditText) dialogView.findViewById(R.id.dialog_valor_oferta);
+        final Button buttonEnviarOferta = (Button) dialogView.findViewById(R.id.button_enviar_oferta);
+
+        dialogBuilder.setTitle("Enviar Oferta");
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+
+        alertDialog.show();
+
+        final DatabaseReference pedidoReference = dbRef.child(pedido.getUserId()).child(pedido.getIdPedido());
+
+
+        buttonEnviarOferta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String key = pedidoReference.push().getKey();
+                String valorString = editTextValorOferta.getText().toString().trim();
+                int valor = Integer.parseInt(valorString);
+
+                Oferta oferta = new Oferta(valor, key);
+
+                pedidoReference.child(key).setValue(oferta);
+
+            }
+        });
+
+
+        alertDialog.dismiss();
+
+
+    }
+
+
+
+
 }
 
 
