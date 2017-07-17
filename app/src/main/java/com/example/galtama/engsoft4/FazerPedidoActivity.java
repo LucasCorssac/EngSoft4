@@ -217,7 +217,7 @@ public class FazerPedidoActivity extends AppCompatActivity{
             uploadFile(id);
 
 
-            Pedido pedido = new Pedido(id, valor, data, causaSocial,usuario.getNome(), usuario.getId());
+            Pedido pedido = new Pedido(id, valor, data, causaSocial, usuario.getNome(), usuario.getId());
 
             dbRef.child(usuario.getId()).child(id).setValue(pedido);
 
