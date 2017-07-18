@@ -23,7 +23,8 @@
         <activity android:name=".RegisterUserActivity" />
         <activity android:name=".MainMenu" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".FazerOfertaActivity"></activity>
+        <activity android:name=".FazerOfertaActivity" />
+        <activity android:name=".PedidoView"></activity>
     </application>
 
 </manifest>

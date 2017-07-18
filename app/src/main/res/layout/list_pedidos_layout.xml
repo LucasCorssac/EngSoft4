@@ -10,16 +10,28 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:inputType="none"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:editable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems = "10"
             android:text="Nome:" />
 
         <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems = "10"
-        android:id="@+id/list_pedidos_layout_Nome"/>
+            android:inputType="none"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:editable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems = "10"
+            android:id="@+id/list_pedidos_layout_Nome"/>
 
     </LinearLayout>
 
@@ -28,21 +40,30 @@
         android:layout_height="wrap_content"
         android:orientation= "horizontal">
         <EditText
+            android:inputType="none"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:editable="false"
             android:id="@+id/editText5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:ems="10"
-            android:inputType="none"
             android:text="Valor:" />
 
         <EditText
+            android:inputType="none"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:editable="false"
             android:id="@+id/list_pedidos_layout_valor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:ems="10"
-            android:inputType="none" />
+            android:ems="10" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,20 +72,49 @@
         android:orientation= "horizontal">
 
         <EditText
+            android:inputType="none"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:editable="false"
             android:id="@+id/editText3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="none"
             android:text="Data de pagamento:" />
 
         <EditText
+            android:inputType="none"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:editable="false"
             android:id="@+id/list_pedidos_layout_dataPagamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="none" />
+            android:ems="10" />
     </LinearLayout>
+
+    <EditText
+        android:inputType="none"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:editable="false"
+        android:id="@+id/list_pedidos_layout_causaSocial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_weight="0.20"/>
+
+    <Button
+        android:id="@+id/buttonFazerOferta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "Fazer Oferta"/>
 
     <ImageView
         android:id="@+id/list_pedidos_layout_imageView"
@@ -72,18 +122,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"/>
 
-    <EditText
-    android:id="@+id/list_pedidos_layout_causaSocial"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="none"
-    android:layout_weight="0.20"/>
 
-    <Button
-        android:id="@+id/buttonFazerOferta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text = "Fazer Oferta"/>
+
+
 
 </LinearLayout>

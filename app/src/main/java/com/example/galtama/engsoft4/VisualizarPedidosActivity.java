@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +37,8 @@ public class VisualizarPedidosActivity extends AppCompatActivity {
 
         listViewPedido = (ListView) findViewById(R.id.listViewPedidos);
         pedidoList = new ArrayList<>();
+
+        ;
 
 
 
@@ -69,6 +72,13 @@ public class VisualizarPedidosActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        listViewPedido.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(VisualizarPedidosActivity.this, "Hello!", Toast.LENGTH_SHORT).show();
             }
         });
     }
