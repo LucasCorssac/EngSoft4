@@ -24,4 +24,9 @@ public class MainMenu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void changeToVisualizarMeusPedidos(View view){
+        Intent intent = new Intent(this, VisualizarMeusPedidosActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -3,6 +3,7 @@ package com.example.galtama.engsoft4;
 import android.media.Image;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,7 +13,7 @@ import java.util.GregorianCalendar;
  * Created by Galtama on 29/05/2017.
  */
 
-public class Pedido {
+public class Pedido implements Serializable {
 
     String idPedido;
     int valorPedido;
