@@ -39,8 +39,6 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
     private Activity context;
     private List<Pedido> pedidoList;
 
-    //private StorageReference mStorageRef;
-    //private DatabaseReference dbRef;
 
 
     public PedidoAdapter(Activity context, List<Pedido> pedidoList){
@@ -48,8 +46,6 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
         this.context = context;
         this.pedidoList = pedidoList;
 
-        //mStorageRef = FirebaseStorage.getInstance().getReference();
-        //dbRef = FirebaseDatabase.getInstance().getReference("pedidos");
 
 
     }

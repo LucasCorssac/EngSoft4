@@ -68,7 +68,19 @@ public class VisualizarMeusPedidosActivity extends AppCompatActivity {
 
             }
         });
+
+        listViewPedido.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),VisualizarOfertasDeUmPedido.class);
+                intent.putExtra("pedido", pedidoList.get(position));
+                startActivity(intent);
+            }
+        });
+
+
     }
+
 
 
 

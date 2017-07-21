@@ -15,12 +15,12 @@ import java.util.GregorianCalendar;
 
 public class Pedido implements Serializable {
 
-    String idPedido;
-    int valorPedido;
-    String dataPagamento;
-    String causaSocial;
-    String nome;
-    String userId;
+    private String idPedido;
+    private int valorPedido;
+    private String dataPagamento;
+    private String causaSocial;
+    private String nome;
+    private String userId;
     //Image imagem;
 
 

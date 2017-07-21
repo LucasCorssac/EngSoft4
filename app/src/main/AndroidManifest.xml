@@ -25,7 +25,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".FazerOfertaActivity" />
         <activity android:name=".PedidoView" />
-        <activity android:name=".VisualizarMeusPedidosActivity"></activity>
+        <activity android:name=".VisualizarMeusPedidosActivity" />
+        <activity android:name=".VisualizarOfertasDeUmPedido"></activity>
     </application>
 
 </manifest>
